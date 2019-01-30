@@ -32,6 +32,7 @@ namespace Writing_platform.Models
 
         [DisplayName("E-mail")]
         [Required(ErrorMessage = "This Field is Required")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
         public string Email { get; set; }
 
         [DataType(DataType.Password)]
