@@ -1,0 +1,144 @@
+﻿body {
+    min-width: 320px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: none;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.part_text {
+    margin-left: -14px;
+    margin-right: -14px;
+    padding: 10px 42px 20px 42px;
+    word-break: break-word;
+    font-family: Verdana, "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.71428;
+    color: #000;
+}
+
+.main {
+    margin-top: 30px;
+    padding-top: 10px;
+    background-color: #f6ecda;
+}
+
+.book-hat {
+    background: #faf4ea;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    padding: 15px 10px 15px 10px;
+    margin: 0 0 20px;
+    text-align: center;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.post {
+    border: #e4dcd8 solid 1px;
+    background: #faf4ea;
+    position: relative;
+    padding: 4px 10px 8px;
+    margin:  15px 5px;
+}
+
+.comment_header {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    padding-right: 75px;
+}
+
+.comment_text {
+    word-wrap: break-word;
+}
+
+.blog {
+    margin: 0 0 27px;
+    padding: 30px 20px 20px;
+    position: relative;
+}
+
+.form-control {
+    height: auto;
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+    font-family: inherit;
+    padding: 10px;
+    margin: 10px;
+}
+
+.btn:hover {
+    color: #9c6847;
+    background-color: white;
+    border-color: #8a5c3f;
+}
+
+    .btn:hover:after {
+        color: #9c6847;
+        background-color: white;
+        border-color: #8a5c3f;
+    }
+
+.btn {
+    margin: 5px 10px 0 0;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.71428;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-default {
+    color: #76482e;
+    background-color: #f6ecda;
+    border-color: #76482e;
+    margin-left:10px;
+}
+
+button:hover {
+    color: black;
+    text-shadow: 0 0 1px darkorange;
+}
+
+button, select {
+    text-transform: none;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 800px;
+}
+
+div {
+    display: block;
+}

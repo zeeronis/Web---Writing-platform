@@ -1,0 +1,79 @@
+﻿@model Writing_platform.Models.ReadBook
+
+@{
+    ViewBag.Title = Model.BookName;
+}
+
+
+
+<div class="main">
+    <center><h2>@Model.BookName <sup> @Model.Rating / 100</sup></h2></center>
+    <div class="book-hat">
+        <h3>Author: @Model.AuthorName</h3>
+        <h3>Publish date: @Model.BookPublishDate utc</h3>
+        <h3>Genres:</h3>
+        @for (int i = 0; i < Model.Genres.Count; i++)
+        {
+            <label for="@ViewData.TemplateInfo.GetFullHtmlFieldId(Model.Genres[i].ToString())">@Model.Genres[i]</label>
+        }
+
+    </div>
+    <div class="part_text">
+        @Model.BookContent
+        <br />
+        @for (int i = 1; i < ViewBag.PagesCount +1; i++)
+    {
+        <a href="@Url.Action("Read", "Book", new { page = i })">@i</a>
+               }
+    </div>
+
+    <div class="blog post">
+        @using (Html.BeginForm("Rate", "Book", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.BookID)
+            <div>
+                @Html.EditorFor(model => model.NewRating, new { htmlAttributes = new { @class = "" } })
+                @Html.ValidationMessageFor(model => model.NewRating, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                <input type="submit" value="Rate it" class="btn btn-default" />
+            </div>
+        }
+        <br />
+        @using (Html.BeginForm("AddPost", "Book", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.BookID)
+            <div>
+                @Html.LabelFor(model => model.NewPostContent, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div>
+                @Html.TextAreaFor(model => model.NewPostContent, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NewPostContent, "", new { @class = "text-danger" })
+                <div>
+                    <input type="submit" value="Send" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="blog">
+        @for (int i = Model.PostsContent.Length - 1; i > 0; i--)
+        {
+            <article class="post">
+                <header class="comment_header">@Model.PostsUserName[i]</header>
+                <div>@Model.PostsContent[i]</div>
+            </article>
+        }
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval");
+}

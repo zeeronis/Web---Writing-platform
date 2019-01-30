@@ -1,0 +1,33 @@
+﻿@model Writing_platform.Models.User
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+
+<div class="main">
+    <center>
+        <h2 class="top-left form-inline">
+            @Html.DisplayFor(model => model.UserName)
+        </h2>
+    </center>
+
+    @Html.LabelFor(model => model.Email, htmlAttributes:
+            new { @class = "control-label" }):
+    @Model.Email
+
+
+    @if (ViewBag.IsCurrentUser)
+    {
+        <div class="book-hat">
+            <ul class="list-unstyled">
+                <li> @Html.ActionLink("Publish book", "Publish", "Book")</li>
+                <li> @Html.ActionLink("Edit profile", "EditProfile", "User")</li>
+                <li> @Html.ActionLink("Delete profile", "DeleteProfile", "User")</li>
+            </ul>
+        </div>
+    }
+
+
+    <br />
+</div>

@@ -1,0 +1,55 @@
+﻿@model Writing_platform.Models.SearchBook
+
+@{
+    ViewBag.Title = "Ratings";
+}
+
+
+
+<div class="main">
+    <div class="book-hat">
+        <label>Top-50</label>
+        <ul class="nav navbar-nav">
+            <li> @Html.ActionLink("Genges", "Ratings/ByGenges", "Book")</li>
+            <li> @Html.ActionLink("Rating", "Ratings/ByRating", "Book")</li>
+            <li> @Html.ActionLink("Comments", "Ratings/ByComments", "Book")</li>
+        </ul>
+
+        @if (Model.IsTopByGenre)
+        {
+            <ul class="blog">
+                @for (int i = 0; i < Model.Genres.Count; i++)
+                {
+                    <li>
+                        <a href="@Url.Action("Ratings/ByGenges", "Book", new { genre = (int)Model.Genres[i].GenreType })">
+                            <label for="@ViewData.TemplateInfo.GetFullHtmlFieldId(Model.Genres[i].GenreType.ToString())">@Model.Genres[i].GenreType</label>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+
+    </div>
+
+
+    <div class="blog">
+        @if (Model.Result == null || Model.Result.Count == 0)
+        {
+            <center> Nothing found</center>
+        }
+        else
+        {
+            for (int i = 1; i < Model.Result.Count + 1; i++)
+            {
+                <article class="post">
+                    <header class="comment_header">
+                      @i.   @Html.ActionLink(Model.Result[i-1].BookName, "Read/" + Model.Result[i - 1].BookID, "Book")
+                    </header>
+                    <div>@Model.Result[i - 1].PublishDate</div>
+                </article>
+            }
+        }
+    </div>
+
+    <br />
+</div>

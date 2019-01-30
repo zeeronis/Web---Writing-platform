@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="42a06a0fcbe14b46958bab161d5dd0d6" Name="Diagram1">
+        <EntityTypeShape EntityType="ReadBookDBModel.Book" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadBookDBModel.Like" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadBookDBModel.Post" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadBookDBModel.User" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="ReadBookDBModel.FK_BookID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadBookDBModel.FK_Like_ToBookID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadBookDBModel.FK_UserID_B" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadBookDBModel.FK_Like_ToUserID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadBookDBModel.FK_UserID_P" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

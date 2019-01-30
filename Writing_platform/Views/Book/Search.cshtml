@@ -1,0 +1,72 @@
+﻿@model Writing_platform.Models.SearchBook
+
+@{
+    ViewBag.Title = "New book";
+}
+
+<div class="main">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <center><h3>Search books</h3></center>
+
+            <div class="book-hat">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AuthorName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AuthorName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AuthorName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BookName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BookName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BookName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Genres, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <ul>
+                        @for (int i = 0; i < Model.Genres.Count; i++)
+                        {
+                            <li>
+                                @Html.CheckBoxFor(model => model.Genres[i].IsSelected)
+                                <label for="@ViewData.TemplateInfo.GetFullHtmlFieldId(Model.Genres[i].GenreType.ToString())">@Model.Genres[i].GenreType</label>
+                                @Html.HiddenFor(model => model.Genres[i].GenreType)
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="book-hat">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+
+        </div>
+    }
+    <div class="blog">
+        @if (Model.Result != null)
+        {
+            for (int i = 1; i < Model.Result.Count + 1; i++)
+            {
+                <article class="post">
+                    <header class="comment_header">
+                      @i.  @Html.ActionLink(Model.Result[i - 1].BookName, "Read/" + Model.Result[i - 1].BookID, "Book")
+                    </header>
+                    <div>@Model.Result[i - 1].Rating</div>
+                </article>
+            }
+        }
+    </div>
+    <br />
+</div>
+
+

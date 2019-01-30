@@ -1,0 +1,33 @@
+﻿@model Writing_platform.Models.EditUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="main">
+    @using (Html.BeginForm("DeleteProfile", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <center><h3>Enter your password to delete account</h3></center>
+                
+            <div class="book-hat">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CurrentPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CurrentPassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CurrentPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <input type="submit" value="Delete" class="btn btn-default" />
+            </div>
+        </div>
+    }
+    <br />  
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval");
+}

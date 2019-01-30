@@ -1,0 +1,18 @@
+﻿@model Writing_platform.Models.SearchBook
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="main">
+    <center><h3>Home</h3></center>
+  
+    
+    <div class="book-hat">
+        <ul class="list-unstyled">
+            <li> @Html.ActionLink("Search book", "Search", "Book")</li>
+            <li> @Html.ActionLink("See book ratings", "Ratings", "Book")</li>
+        </ul>
+    </div>
+    <br />
+</div>
